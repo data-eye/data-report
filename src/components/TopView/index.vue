@@ -3,12 +3,12 @@
     <el-row :gutter="20">
       <el-col :span="6">
         <el-card shadow="hover">
-          <total-sales />
+          <flow-income />
         </el-card>
       </el-col>
       <el-col :span="6">
         <el-card shadow="hover">
-          鼠标悬浮时显示
+          <total-order />
         </el-card>
       </el-col>
       <el-col :span="6">
@@ -26,11 +26,13 @@
 </template>
 
 <script>
-import TotalSales from "../TotalSales";
+import FlowIncome from "../FlowIncome";
+import TotalOrder from "../TotalOrder";
 export default {
   name: "TopView",
   components: {
-    TotalSales
+    FlowIncome,
+    TotalOrder
   }
 };
 </script>
