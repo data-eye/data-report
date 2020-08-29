@@ -13,7 +13,7 @@
       </el-col>
       <el-col :span="6">
         <el-card shadow="hover">
-          鼠标悬浮时显示
+          <total-visitors />
         </el-card>
       </el-col>
       <el-col :span="6">
@@ -28,11 +28,13 @@
 <script>
 import FlowIncome from "../FlowIncome";
 import TotalOrder from "../TotalOrder";
+import TotalVisitors from "../TotalVisitors";
 export default {
   name: "TopView",
   components: {
     FlowIncome,
-    TotalOrder
+    TotalOrder,
+    TotalVisitors
   }
 };
 </script>
