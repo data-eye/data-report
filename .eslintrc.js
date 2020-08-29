@@ -16,9 +16,9 @@ module.exports = {
   rules: {
     "no-console":
       process.env.VUE_APP_PROJECT_ENV === "production" ||
-      process.env.VUE_APP_PROJECT_ENV === "sandbox"
-        ? "error"
-        : "off",
+      process.env.VUE_APP_PROJECT_ENV === "sandbox" ?
+        "error" :
+        "off",
     // 禁止 for 循环出现方向错误的循环，比如 for (i = 0; i < 10; i--)
     "for-direction": "error",
     // getter 必须有返回值，并且禁止返回空，比如 return;
@@ -31,9 +31,9 @@ module.exports = {
     // allow debugger during development
     "no-debugger":
       process.env.VUE_APP_PROJECT_ENV === "production" ||
-      process.env.VUE_APP_PROJECT_ENV === "sandbox"
-        ? 2
-        : 0,
+      process.env.VUE_APP_PROJECT_ENV === "sandbox" ?
+        2 :
+        0,
     "no-alert": 0, //禁止使用alert confirm prompt
     "no-array-constructor": 2, //禁止使用数组构造器
     "no-bitwise": 0, //禁止使用按位运算符
