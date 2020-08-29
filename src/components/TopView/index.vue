@@ -13,12 +13,12 @@
       </el-col>
       <el-col :span="6">
         <el-card shadow="hover">
-          <total-visitors />
+          <today-visitors />
         </el-card>
       </el-col>
       <el-col :span="6">
         <el-card shadow="hover">
-          鼠标悬浮时显示
+          <total-fans />
         </el-card>
       </el-col>
     </el-row>
@@ -28,13 +28,15 @@
 <script>
 import FlowIncome from "../FlowIncome";
 import TotalOrder from "../TotalOrder";
-import TotalVisitors from "../TotalVisitors";
+import TodayVisitors from "../TodayVisitors";
+import TotalFans from "../TotalFans";
 export default {
   name: "TopView",
   components: {
     FlowIncome,
     TotalOrder,
-    TotalVisitors
+    TodayVisitors,
+    TotalFans
   }
 };
 </script>
