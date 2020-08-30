@@ -36,7 +36,10 @@
       <template>
         <div class="sales-view-chart-wrapper">
           <!-- <v-chart :options="chartOption" /> -->
-          <div class="echarts"></div>
+          <div
+            id="total-reading-chart"
+            :style="{ width: '100%', height: '100%' }"
+          ></div>
           <div class="sales-view-list">
             <div class="sales-view-title">排行榜</div>
             <div class="list-item-wrapper">
@@ -127,8 +130,95 @@ export default {
           reading: "709"
         }
       ],
-      chartOption: {}
+      chartOption: {
+        title: {
+          text: "文章阅读量",
+          textStyle: {
+            fontSize: 12,
+            color: "#666"
+          },
+          left: 25,
+          top: 20
+        },
+        xAxis: {
+          type: "category",
+          data: [
+            "1月",
+            "2月",
+            "3月",
+            "4月",
+            "5月",
+            "6月",
+            "7月",
+            "8月",
+            "9月",
+            "10月",
+            "11月",
+            "12月"
+          ],
+          axisTick: {
+            alignWithLabel: true,
+            lineStyle: {
+              color: "#999"
+            }
+          },
+          axisLine: {
+            lineStyle: {
+              color: "#999"
+            }
+          },
+          axisLabel: {
+            color: "#333"
+          }
+        },
+        yAxis: {
+          axisLine: {
+            show: false
+          },
+          axisTick: {
+            show: false
+          },
+          splitLine: {
+            lineStyle: {
+              type: "dotted",
+              color: "#eee"
+            }
+          }
+        },
+        series: [
+          {
+            type: "bar",
+            barWidth: "35%",
+            data: [
+              4200,
+              4600,
+              4000,
+              5100,
+              5600,
+              5000,
+              4900,
+              4700,
+              5029,
+              5210,
+              4809,
+              5002
+            ]
+          }
+        ],
+        color: ["#3398DB"],
+        grid: {
+          top: 70,
+          left: 60,
+          right: 60,
+          bottom: 50
+        }
+      }
     };
+  },
+  mounted() {
+    const chartDom = document.getElementById("total-reading-chart");
+    const chart = this.$echarts.init(chartDom);
+    chart.setOption(this.chartOption);
   },
   computed: {
     // rankData() {
@@ -186,7 +276,7 @@ export default {
     display: flex;
     height: 270px;
 
-    .echarts {
+    #total-reading-chart {
       flex: 0 0 70%;
       width: 70%;
       height: 100%;

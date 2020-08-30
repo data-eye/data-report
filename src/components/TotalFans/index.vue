@@ -68,7 +68,7 @@ export default {
           stack: "粉丝数",
           renderItem: (params, api) => {
             const value = api.value(0);
-            console.log("value", value);
+            // console.log("value", value);
             const endPoint = api.coord([value, 0]);
             return {
               type: "group",
