@@ -1,7 +1,7 @@
 <template>
   <div class="home">
     <top-view />
-    <sales-view />
+    <reading-view />
     <bottom-view />
     <map-view />
   </div>
@@ -10,7 +10,7 @@
 <script>
 // @ is an alias to /src
 import TopView from "../components/TopView";
-import SalesView from "../components/SalesView";
+import ReadingView from "../components/ReadingView";
 import BottomView from "../components/BottomView";
 import MapView from "../components/MapView";
 
@@ -18,7 +18,7 @@ export default {
   name: "Home",
   components: {
     TopView,
-    SalesView,
+    ReadingView,
     BottomView,
     MapView
   }
