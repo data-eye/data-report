@@ -48,26 +48,30 @@
     </div>
     <div class="view">
       <el-card shadow="hover">
-        <!-- <template v-slot:header>
+        <template v-slot:header>
           <div class="title-wrapper">
-            <div class="title">分类销售排行</div>
+            <div class="title">文章分类</div>
             <div class="radio-wrapper">
               <el-radio-group
                 v-model="radioSelect"
                 size="small"
                 @change="onCategoryChange"
               >
-                <el-radio-button label="品类"></el-radio-button>
-                <el-radio-button label="商品"></el-radio-button>
+                <el-radio-button label="类型"></el-radio-button>
+                <el-radio-button label="专辑"></el-radio-button>
               </el-radio-group>
             </div>
           </div>
         </template>
         <template>
           <div class="chart-wrapper">
-            <v-chart :options="categoryOptions" />
+            <!-- <v-chart :options="categoryOptions" /> -->
+            <div
+              id="total-category-chart"
+              :style="{ width: '100%', height: '100%' }"
+            ></div>
           </div>
-        </template> -->
+        </template>
       </el-card>
     </div>
   </div>
@@ -198,9 +202,9 @@ export default {
       total: 6,
       pageSize: 4,
       userCount: 1800,
-      searchCount: 6000
-      // radioSelect: '品类',
-      // categoryOptions: {}
+      searchCount: 6000,
+      radioSelect: "类型",
+      categoryOptions: {}
     };
   },
   mounted() {
@@ -211,9 +215,172 @@ export default {
     const chartCountDom = document.getElementById("total-search-count-chart");
     const chartCount = this.$echarts.init(chartCountDom);
     chartCount.setOption(this.searchCountOption);
+
+    this.renderPieChart();
   },
   methods: {
-    onPageChange(page) {}
+    onPageChange(page) {},
+    renderPieChart() {
+      const chartData = [
+        {
+          legendname: "源码",
+          value: 13,
+          percent: "45.5%",
+          itemStyle: {
+            color: "#515070"
+          },
+          name: "源码 | 45.5%"
+        },
+        {
+          legendname: "骚操作/技巧",
+          value: 2,
+          percent: "7%",
+          itemStyle: {
+            color: "#43658b"
+          },
+          name: "骚操作/技巧 | 7%"
+        },
+        {
+          legendname: "面试",
+          value: 2,
+          percent: "7%",
+          itemStyle: {
+            color: "#ed6663"
+          },
+          name: "面试 | 7%"
+        },
+        {
+          legendname: "Chrome",
+          value: 1,
+          percent: "3.5%",
+          itemStyle: {
+            color: "#decdc3"
+          },
+          name: "Chrome | 3.5%"
+        },
+        {
+          legendname: "React",
+          value: 1,
+          percent: "3.5%",
+          itemStyle: {
+            color: "#2d4059"
+          },
+          name: "React | 3.5%"
+        },
+        {
+          legendname: "Vue",
+          value: 5,
+          percent: "17.5%",
+          itemStyle: {
+            color: "#ff8e6e"
+          },
+          name: "Vue | 17.5%"
+        },
+        {
+          legendname: "数据结构与算法",
+          value: 1,
+          percent: "3.5%",
+          itemStyle: {
+            color: "#ffa372"
+          },
+          name: "数据结构与算法 | 3.5%"
+        }
+      ];
+      this.categoryOptions = {
+        title: [
+          {
+            text: `${this.radioSelect}分布`,
+            textStyle: {
+              fontSize: 14,
+              color: "#666"
+            },
+            left: 20,
+            top: 20
+          },
+          {
+            text: "全部分类",
+            subtext: "320",
+            x: "34.5%",
+            y: "42.5%",
+            textStyle: {
+              fontSize: 14,
+              color: "#999"
+            },
+            subtextStyle: {
+              fontSize: 28,
+              color: "#333"
+            },
+            textAlign: "center"
+          }
+        ],
+        series: [
+          {
+            name: "文章分类",
+            type: "pie",
+            data: chartData,
+            label: {
+              normal: {
+                show: true,
+                position: "outter",
+                formatter: function(params) {
+                  return params.data.legendname;
+                }
+              }
+            },
+            center: ["35%", "50%"],
+            radius: ["45%", "60%"],
+            labelLine: {
+              normal: {
+                length: 5,
+                length2: 3,
+                smooth: true
+              }
+            },
+            clockwise: false,
+            itemStyle: {
+              borderWidth: 4,
+              borderColor: "#fff"
+            }
+          }
+        ],
+        legend: {
+          type: "scroll",
+          orient: "vertical",
+          height: 250,
+          left: "70%",
+          top: "middle",
+          textStyle: {
+            color: "#8c8c8c"
+          }
+        },
+        tooltip: {
+          trigger: "item",
+          formatter: function(params) {
+            console.log("toottip params", params);
+            const str =
+              params.seriesName +
+              "<br />" +
+              params.marker +
+              params.data.legendname +
+              "<br />" +
+              "数量：" +
+              params.data.value +
+              "<br />" +
+              "占比：" +
+              params.data.percent +
+              "%";
+            return str;
+          }
+        }
+      };
+      const chartCategoryDom = document.getElementById("total-category-chart");
+      const chartCategory = this.$echarts.init(chartCategoryDom);
+      chartCategory.setOption(this.categoryOptions);
+    },
+    onCategoryChange(type) {
+      this.radioSelect = type;
+      this.renderPieChart();
+    }
   }
 };
 </script>
