@@ -406,9 +406,9 @@ export default {
     .title-wrapper {
       display: flex;
       align-items: center;
-      height: 60px;
+      height: 42px;
       box-sizing: border-box;
-      border-bottom: 1px solid #eee;
+      // border-bottom: 1px solid #eee;
       font-size: 14px;
       font-weight: 500;
       padding: 0 0 0 20px;
