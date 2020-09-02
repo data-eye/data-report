@@ -35,7 +35,7 @@ export default {
     const chartDom = document.getElementById("total-fans-chart");
     const chart = this.$echarts.init(chartDom);
     chart.setOption({
-      color: ["#3398DB"],
+      color: ["#ffe084"],
       xAxis: {
         type: "value",
         show: false
@@ -51,7 +51,7 @@ export default {
           stack: "粉丝数",
           barWidth: 10,
           itemStyle: {
-            color: "#45c946"
+            color: "#ffe084"
           }
         },
         {
@@ -85,7 +85,7 @@ export default {
                     layout: "cover"
                   },
                   style: {
-                    fill: "#45c946"
+                    fill: "#ffc057"
                   }
                 },
                 {
@@ -99,7 +99,7 @@ export default {
                     layout: "cover"
                   },
                   style: {
-                    fill: "#45c946"
+                    fill: "#ffc057"
                   }
                 }
               ]

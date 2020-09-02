@@ -205,7 +205,7 @@ export default {
             ]
           }
         ],
-        color: ["#3398DB"],
+        color: ["#ea5959"],
         grid: {
           top: 70,
           left: 60,

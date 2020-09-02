@@ -28,7 +28,7 @@ export default {
     const chartDom = document.getElementById("today-visitors-chart");
     const chart = this.$echarts.init(chartDom);
     chart.setOption({
-      color: ["#3398DB"],
+      color: ["#ea5959"],
       xAxis: {
         type: "category",
         data: ["06:00", "09:00", "12:00", "15:00", "18:00", "21:00", "24:00"]

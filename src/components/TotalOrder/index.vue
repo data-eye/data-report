@@ -41,7 +41,7 @@ export default {
           type: "line",
           data: [350, 420, 540, 360, 340, 290, 510, 230, 310],
           areaStyle: {
-            color: "purple"
+            color: "#f98b60"
           },
           lineStyle: {
             width: 0
